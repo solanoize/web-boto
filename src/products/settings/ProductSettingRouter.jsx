@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom";
 import ProductPageList from "../pages/ProductPageList";
 import ManagerPage403 from "../../managers/pages/ManagerPage403";
 import ManagerWidgetLayoutProtected from "../../managers/widgets/ManagerWidgetLayoutProtected";
+import { CREATE_PRODUCTS, READ_PRODUCTS } from "../states/constants";
+import ProductPageCreate from "../pages/ProductPageCreate";
 
 const ProductSettingRouter = () => {
   const context = useContext(UtilStateContextBase);
@@ -23,12 +25,31 @@ const ProductSettingRouter = () => {
         index
         element={
           access.has(
-            ["read-products"],
+            [READ_PRODUCTS],
             context.auth.superuser,
             context.auth.accessList
           ) ? (
             <ManagerWidgetLayoutProtected>
               <ProductPageList />
+            </ManagerWidgetLayoutProtected>
+          ) : (
+            <ManagerWidgetLayoutProtected>
+              <ManagerPage403 />
+            </ManagerWidgetLayoutProtected>
+          )
+        }
+      />
+
+      <Route
+        path="new"
+        element={
+          access.has(
+            [CREATE_PRODUCTS],
+            context.auth.superuser,
+            context.auth.accessList
+          ) ? (
+            <ManagerWidgetLayoutProtected>
+              <ProductPageCreate />
             </ManagerWidgetLayoutProtected>
           ) : (
             <ManagerWidgetLayoutProtected>

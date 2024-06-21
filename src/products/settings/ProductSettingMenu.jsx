@@ -17,6 +17,10 @@ const ProductSettingMenu = () => {
         <ManagerWidgetRBAC context={context} permissions={[READ_PRODUCTS]}>
           <NavDropdown.Item href="#products">Products</NavDropdown.Item>
         </ManagerWidgetRBAC>
+
+        <ManagerWidgetRBAC context={context} permissions={[CREATE_PRODUCTS]}>
+          <NavDropdown.Item href="#products/new">New Product</NavDropdown.Item>
+        </ManagerWidgetRBAC>
       </NavDropdown>
     </ManagerWidgetRBAC>
   );

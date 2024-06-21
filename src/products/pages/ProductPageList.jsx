@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { UtilStateContextBase } from "../../utils/states/contexts";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useList from "../../utils/hooks/useList";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import ManagerWidgetTitle from "../../managers/widgets/ManagerWidgetTitle";
@@ -13,6 +13,7 @@ import {
 } from "../states/constants";
 
 const ProductPageList = () => {
+  const navigate = useNavigate();
   const context = useContext(UtilStateContextBase);
   const productList = useList(["products"]);
 
@@ -25,7 +26,7 @@ const ProductPageList = () => {
     <Container>
       <ManagerWidgetTitle title={"Products"}>
         <ManagerWidgetRBAC context={context} permissions={[CREATE_PRODUCTS]}>
-          <Button>New Product</Button>
+          <Button onClick={() => navigate("new")}>New Product</Button>
         </ManagerWidgetRBAC>
       </ManagerWidgetTitle>
 

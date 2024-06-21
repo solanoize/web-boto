@@ -1,6 +1,6 @@
 export const PRODUCT_DATA_INIT = {
   name: "",
-  price: 0,
+  price: null,
   stock: 1,
   owner: "",
   isDelete: false,
@@ -8,7 +8,7 @@ export const PRODUCT_DATA_INIT = {
 
 export const PRODUCT_FIELD_GUIDE = ["name", "price", "stock"];
 
-export const ROLE_FIELD_VALIDATION = ["name", "price", "stock"];
+export const PRODUCT_FIELD_VALIDATION = ["name", "price", "stock"];
 
 export const READ_PRODUCTS = "read-products";
 export const CREATE_PRODUCTS = "create-products";
