@@ -6,8 +6,13 @@ import { Route, Routes } from "react-router-dom";
 import ProductPageList from "../pages/ProductPageList";
 import ManagerPage403 from "../../managers/pages/ManagerPage403";
 import ManagerWidgetLayoutProtected from "../../managers/widgets/ManagerWidgetLayoutProtected";
-import { CREATE_PRODUCTS, READ_PRODUCTS } from "../states/constants";
+import {
+  CREATE_PRODUCTS,
+  READ_PRODUCTS,
+  UPDATE_PRODUCTS,
+} from "../states/constants";
 import ProductPageCreate from "../pages/ProductPageCreate";
+import ProductPageUpdate from "../pages/ProductPageUpdate";
 
 const ProductSettingRouter = () => {
   const context = useContext(UtilStateContextBase);
@@ -50,6 +55,25 @@ const ProductSettingRouter = () => {
           ) ? (
             <ManagerWidgetLayoutProtected>
               <ProductPageCreate />
+            </ManagerWidgetLayoutProtected>
+          ) : (
+            <ManagerWidgetLayoutProtected>
+              <ManagerPage403 />
+            </ManagerWidgetLayoutProtected>
+          )
+        }
+      />
+
+      <Route
+        path="update/:id"
+        element={
+          access.has(
+            [UPDATE_PRODUCTS],
+            context.auth.superuser,
+            context.auth.accessList
+          ) ? (
+            <ManagerWidgetLayoutProtected>
+              <ProductPageUpdate />
             </ManagerWidgetLayoutProtected>
           ) : (
             <ManagerWidgetLayoutProtected>
