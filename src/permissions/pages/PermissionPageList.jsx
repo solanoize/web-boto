@@ -1,12 +1,11 @@
-import {useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import ManagerWidgetPagination from "../../managers/widgets/ManagerWidgetPagination";
 import ManagerWidgetFilter from "../../managers/widgets/ManagerWidgetFilter";
 import { useNavigate } from "react-router-dom";
 import useList from "../../utils/hooks/useList.jsx";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC.jsx";
-import {UtilStateContextBase} from "../../utils/states/contexts.jsx";
-import {AiFillLock} from "react-icons/ai";
+import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
 
 const PermissionPageList = () => {
   const context = useContext(UtilStateContextBase);
@@ -16,14 +15,17 @@ const PermissionPageList = () => {
   useEffect(() => {
     permissionList.onAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [context.auth.isAuthenticated]);
 
   return (
-    <Container>
+    <Container className="mt-3">
       <Row className="mb-3">
         <Col className="d-flex justify-content-between">
           <h4>Permissions</h4>
-          <ManagerWidgetRBAC context={context} permissions={['create-permissions']} >
+          <ManagerWidgetRBAC
+            context={context}
+            permissions={["create-permissions"]}
+          >
             <Button onClick={() => navigate("new")}>New Permissions</Button>
           </ManagerWidgetRBAC>
         </Col>

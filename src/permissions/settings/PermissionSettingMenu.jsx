@@ -1,28 +1,30 @@
-import {useContext} from "react";
-import {UtilStateContextBase} from "../../utils/states/contexts.jsx";
-import {NavDropdown} from "react-bootstrap";
+import { useContext } from "react";
+import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
+import { NavLink } from "react-bootstrap";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC.jsx";
-import {CREATE_PERMISSIONS, READ_PERMISSIONS} from "../states/constants.jsx";
+import { CREATE_PERMISSIONS, READ_PERMISSIONS } from "../states/constants.jsx";
 
 const PermissionSettingMenu = () => {
   const context = useContext(UtilStateContextBase);
 
   return (
-    <ManagerWidgetRBAC context={context} permissions={[READ_PERMISSIONS, CREATE_PERMISSIONS]} or={true}>
-      <NavDropdown title="Permission Manager" id="basic-nav-dropdown">
+    <ManagerWidgetRBAC
+      context={context}
+      permissions={[READ_PERMISSIONS, CREATE_PERMISSIONS]}
+      or={true}
+    >
+      <li className="nav-item">
         <ManagerWidgetRBAC context={context} permissions={[READ_PERMISSIONS]}>
-          <NavDropdown.Item href="#permissions">
+          <NavLink
+            className="d-flex align-items-center gap-2"
+            href="#permissions"
+          >
             Permissions
-          </NavDropdown.Item>
+          </NavLink>
         </ManagerWidgetRBAC>
-        <ManagerWidgetRBAC context={context} permissions={[CREATE_PERMISSIONS]}>
-          <NavDropdown.Item href="#permissions/new">
-            New Permission
-          </NavDropdown.Item>
-        </ManagerWidgetRBAC>
-      </NavDropdown>
+      </li>
     </ManagerWidgetRBAC>
-  )
-}
+  );
+};
 
 export default PermissionSettingMenu;
