@@ -1,6 +1,6 @@
 import useAuth from "./utils/hooks/useAuth.jsx";
 import { UtilStateContextBase } from "./utils/states/contexts";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import PermissionSettingRouter from "./permissions/settings/PermissionSettingRouter.jsx";
 import RoleSettingRouter from "./roles/setttings/RoleSettingRouter.jsx";
 import UserSettingRouter from "./users/settings/UserSettingRouter.jsx";
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <UtilStateContextBase.Provider value={{ auth }}>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path={"/*"} element={<DashboardSettingRouter />} />
           <Route
@@ -25,7 +25,7 @@ function App() {
           <Route path={"/products/*"} element={<ProductSettingRouter />} />
           <Route path={"/orders/*"} element={<OrderSettingRouter />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </UtilStateContextBase.Provider>
   );
 }

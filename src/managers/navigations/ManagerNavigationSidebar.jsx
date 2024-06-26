@@ -1,4 +1,4 @@
-import { FaPlusCircle, FaTractor } from "react-icons/fa";
+import { FaTractor } from "react-icons/fa";
 import PermissionSettingMenu from "../../permissions/settings/PermissionSettingMenu";
 
 const ManagerNavigationSidebar = () => {
@@ -34,36 +34,6 @@ const ManagerNavigationSidebar = () => {
                 Dashboard
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Orders
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Products
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Customers
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Reports
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Integrations
-              </a>
-            </li>
           </ul>
 
           <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -71,43 +41,6 @@ const ManagerNavigationSidebar = () => {
           </h6>
           <ul className="nav flex-column mb-auto">
             <PermissionSettingMenu />
-          </ul>
-
-          <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
-            <a
-              className="link-secondary"
-              href="#"
-              aria-label="Add a new report"
-            >
-              <FaPlusCircle />
-            </a>
-          </h6>
-          <ul className="nav flex-column mb-auto">
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Current month
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Last quarter
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Social engagement
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Year-end sale
-              </a>
-            </li>
           </ul>
 
           <hr className="my-3" />
