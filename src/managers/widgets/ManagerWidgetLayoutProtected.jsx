@@ -12,6 +12,7 @@ const ManagerWidgetLayoutProtected = ({ children }) => {
       {context.auth.isAuthenticated ? (
         <>
           <ManagerWidgetHeader />
+          <div className="mb-4"></div>
           {children}
         </>
       ) : (
