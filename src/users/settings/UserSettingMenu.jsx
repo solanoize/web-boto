@@ -1,28 +1,28 @@
-import {useContext} from "react";
-import {UtilStateContextBase} from "../../utils/states/contexts.jsx";
-import {NavDropdown} from "react-bootstrap";
+import { useContext } from "react";
+import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
+import { NavLink } from "react-bootstrap";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC.jsx";
-import {CREATE_USERS, READ_USERS} from "../states/constants.jsx";
+import { CREATE_USERS, READ_USERS } from "../states/constants.jsx";
+import { READ_ROLES } from "../../roles/states/constants.jsx";
 
 const UserSettingMenu = () => {
   const context = useContext(UtilStateContextBase);
 
   return (
-    <ManagerWidgetRBAC context={context} permissions={[READ_USERS, CREATE_USERS]} or={true}>
-      <NavDropdown title="User Manager" id="basic-nav-dropdown">
+    <ManagerWidgetRBAC
+      context={context}
+      permissions={[READ_USERS, CREATE_USERS, READ_ROLES]}
+      or={true}
+    >
+      <li className="nav-item">
         <ManagerWidgetRBAC context={context} permissions={[READ_USERS]}>
-          <NavDropdown.Item href="#users">
+          <NavLink className="d-flex align-items-center" href="#users">
             Users
-          </NavDropdown.Item>
-          <ManagerWidgetRBAC context={context} permissions={[CREATE_USERS]}>
-            <NavDropdown.Item href="#users/new">
-              New User
-            </NavDropdown.Item>
-          </ManagerWidgetRBAC>
+          </NavLink>
         </ManagerWidgetRBAC>
-      </NavDropdown>
+      </li>
     </ManagerWidgetRBAC>
-  )
-}
+  );
+};
 
 export default UserSettingMenu;

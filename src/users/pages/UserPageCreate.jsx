@@ -22,7 +22,7 @@ const UserPageCreate = () => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-3">
         <Row className="mb-3">
           <Col>
             <h3>New User</h3>

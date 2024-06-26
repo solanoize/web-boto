@@ -3,11 +3,13 @@ import { UtilStateContextBase } from "../../utils/states/contexts";
 import useAPI from "../../utils/hooks/useAPI";
 import useAccess from "../../utils/hooks/useAccess";
 import { Route, Routes } from "react-router-dom";
-import { READ_ORDERS } from "../states/constants";
+import { CREATE_ORDERS, READ_ORDERS } from "../states/constants";
 import ManagerWidgetLayoutProtected from "../../managers/widgets/ManagerWidgetLayoutProtected";
 import OrderPageList from "../pages/OrderPageList";
 import ManagerPage403 from "../../managers/pages/ManagerPage403";
 import ManagerPage404 from "../../managers/pages/ManagerPage404";
+import { READ_PRODUCTS } from "../../products/states/constants";
+import OrderPageCreate from "../pages/OrderPageCreate";
 
 const OrderSettingRouter = () => {
   const context = useContext(UtilStateContextBase);
@@ -31,6 +33,25 @@ const OrderSettingRouter = () => {
           ) ? (
             <ManagerWidgetLayoutProtected>
               <OrderPageList />
+            </ManagerWidgetLayoutProtected>
+          ) : (
+            <ManagerWidgetLayoutProtected>
+              <ManagerPage403 />
+            </ManagerWidgetLayoutProtected>
+          )
+        }
+      />
+
+      <Route
+        path="new"
+        element={
+          access.has(
+            [CREATE_ORDERS, READ_PRODUCTS],
+            context.auth.superuser,
+            context.auth.accessList
+          ) ? (
+            <ManagerWidgetLayoutProtected>
+              <OrderPageCreate />
             </ManagerWidgetLayoutProtected>
           ) : (
             <ManagerWidgetLayoutProtected>

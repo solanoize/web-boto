@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC.jsx";
-import { CREATE_ROLES, READ_ROLES } from "../states/constants.jsx";
-import { NavDropdown } from "react-bootstrap";
-import { READ_PERMISSIONS } from "../../permissions/states/constants.jsx";
+import { READ_ROLES } from "../states/constants.jsx";
+import { NavLink } from "react-bootstrap";
+import {
+  CREATE_PERMISSIONS,
+  READ_PERMISSIONS,
+} from "../../permissions/states/constants.jsx";
 
 const RoleSettingMenu = () => {
   const context = useContext(UtilStateContextBase);
@@ -11,19 +14,15 @@ const RoleSettingMenu = () => {
   return (
     <ManagerWidgetRBAC
       context={context}
-      permissions={[READ_ROLES, CREATE_ROLES, READ_PERMISSIONS]}
+      permissions={[READ_ROLES, CREATE_PERMISSIONS, READ_PERMISSIONS]}
     >
-      <NavDropdown title="Role Management">
+      <li className="nav-item">
         <ManagerWidgetRBAC context={context} permissions={[READ_ROLES]}>
-          <NavDropdown.Item href="#roles">Roles</NavDropdown.Item>
+          <NavLink className="d-flex align-items-center" href="#roles">
+            Roles
+          </NavLink>
         </ManagerWidgetRBAC>
-        <ManagerWidgetRBAC
-          context={context}
-          permissions={[CREATE_ROLES, READ_PERMISSIONS]}
-        >
-          <NavDropdown.Item href="#roles/new">New Role</NavDropdown.Item>
-        </ManagerWidgetRBAC>
-      </NavDropdown>
+      </li>
     </ManagerWidgetRBAC>
   );
 };

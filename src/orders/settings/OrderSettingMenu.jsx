@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { UtilStateContextBase } from "../../utils/states/contexts";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC";
 import { CREATE_ORDERS, READ_ORDERS } from "../states/constants";
-import { READ_PRODUCTS } from "../../products/states/constants";
-import { NavDropdown } from "react-bootstrap";
+import { NavLink } from "react-bootstrap";
 
 const OrderSettingMenu = () => {
   const context = useContext(UtilStateContextBase);
@@ -11,21 +10,16 @@ const OrderSettingMenu = () => {
   return (
     <ManagerWidgetRBAC
       context={context}
-      permissions={[READ_ORDERS, CREATE_ORDERS, READ_PRODUCTS]}
+      permissions={[READ_ORDERS, CREATE_ORDERS]}
       or={true}
     >
-      <NavDropdown title="Order Manager">
+      <li className="nav-item">
         <ManagerWidgetRBAC context={context} permissions={[READ_ORDERS]}>
-          <NavDropdown.Item href="#orders">Orders</NavDropdown.Item>
+          <NavLink className="d-flex align-items-center" href="#orders">
+            Orders
+          </NavLink>
         </ManagerWidgetRBAC>
-
-        <ManagerWidgetRBAC
-          context={context}
-          permissions={[CREATE_ORDERS, READ_PRODUCTS]}
-        >
-          <NavDropdown.Item href="#orders/new">New Order</NavDropdown.Item>
-        </ManagerWidgetRBAC>
-      </NavDropdown>
+      </li>
     </ManagerWidgetRBAC>
   );
 };

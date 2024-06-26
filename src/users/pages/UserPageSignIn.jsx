@@ -1,15 +1,26 @@
 import useUser from "../../utils/hooks/useUser.jsx";
-import {USER_DATA_INIT, USER_FIELD_GUIDE, USER_FIELD_VALIDATION} from "../states/constants.jsx";
-import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import {
+  USER_DATA_INIT,
+  USER_FIELD_GUIDE,
+  USER_FIELD_VALIDATION,
+} from "../states/constants.jsx";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import ManagerWidgetGuide from "../../managers/widgets/ManagerWidgetGuide.jsx";
 import ManagerWidgetValidation from "../../managers/widgets/ManagerWidgetValidation.jsx";
 
 const UserPageSignIn = () => {
-  const userSignIn = useUser(['users', 'signin'], USER_DATA_INIT, USER_FIELD_GUIDE,USER_FIELD_VALIDATION);
+  const userSignIn = useUser(
+    ["users", "signin"],
+    USER_DATA_INIT,
+    USER_FIELD_GUIDE,
+    USER_FIELD_VALIDATION
+  );
 
   return (
     <Container>
-      <Row className={"d-flex justify-content-center align-items-center vh-100"}>
+      <Row
+        className={"d-flex justify-content-center align-items-center vh-100"}
+      >
         <Col md={4}>
           <Card>
             <Card.Body>
@@ -25,7 +36,9 @@ const UserPageSignIn = () => {
                   value={userSignIn.state.email}
                 />
                 <ManagerWidgetGuide guide={userSignIn.guide} field={"email"} />
-                <ManagerWidgetValidation messages={userSignIn.validation.get("email")} />
+                <ManagerWidgetValidation
+                  messages={userSignIn.validation.get("email")}
+                />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
@@ -37,24 +50,23 @@ const UserPageSignIn = () => {
                   onChange={userSignIn.input.handler}
                   value={userSignIn.state.password}
                 />
-                <ManagerWidgetGuide guide={userSignIn.guide} field={"password"} />
+                <ManagerWidgetGuide
+                  guide={userSignIn.guide}
+                  field={"password"}
+                />
                 <ManagerWidgetValidation
                   messages={userSignIn.validation.get("password")}
                 />
               </Form.Group>
             </Card.Body>
             <Card.Footer>
-              <Button onClick={
-                () => userSignIn.onSignIn(null)
-              }>
-                Sign In
-              </Button>
+              <Button onClick={() => userSignIn.onSignIn(null)}>Sign In</Button>
             </Card.Footer>
           </Card>
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default UserPageSignIn;

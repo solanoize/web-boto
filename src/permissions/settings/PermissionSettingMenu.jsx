@@ -15,10 +15,7 @@ const PermissionSettingMenu = () => {
     >
       <li className="nav-item">
         <ManagerWidgetRBAC context={context} permissions={[READ_PERMISSIONS]}>
-          <NavLink
-            className="d-flex align-items-center gap-2"
-            href="#permissions"
-          >
+          <NavLink className="d-flex align-items-center" href="#permissions">
             Permissions
           </NavLink>
         </ManagerWidgetRBAC>

@@ -18,7 +18,7 @@ const RolePageUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const roleDetail = useDetail(
- ["roles"],
+    ["roles"],
     ROLE_DATA_INIT,
     ROLE_FIELD_GUIDE,
     ROLE_FIELD_VALIDATION
@@ -31,7 +31,7 @@ const RolePageUpdate = () => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-3">
         <Row className="mb-3">
           <Col className="d-flex justify-content-between">
             <h4>Update Role</h4>

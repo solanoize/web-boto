@@ -32,7 +32,7 @@ const ProductPageUpdate = () => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-4">
         <ManagerWidgetTitle title={"Update Product"} />
         <Row className="mb-3">
           <Col>

@@ -44,7 +44,7 @@ const useStaticPagination = (data, trigger, sizeOfPage = 5) => {
     const startIndex = (currentPage.current - 1) * pageSize.current;
     const endIndex = startIndex + pageSize.current;
     const result = datas.slice(startIndex, endIndex);
-
+    console.log(result);
     setResults(result);
   };
 

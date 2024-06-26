@@ -31,7 +31,7 @@ const ProductPageList = () => {
   }, []);
 
   return (
-    <Container>
+    <Container className="mt-4">
       <ManagerWidgetTitle title={"Products"}>
         <ManagerWidgetRBAC context={context} permissions={[CREATE_PRODUCTS]}>
           <Button onClick={() => navigate("new")}>New Product</Button>

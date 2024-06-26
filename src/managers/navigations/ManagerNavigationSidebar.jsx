@@ -1,7 +1,16 @@
-import { FaPlusCircle, FaTractor } from "react-icons/fa";
+import { FaTractor } from "react-icons/fa";
 import PermissionSettingMenu from "../../permissions/settings/PermissionSettingMenu";
+import RoleSettingMenu from "../../roles/setttings/RoleSettingMenu";
+import UserSettingMenu from "../../users/settings/UserSettingMenu";
+import { NavLink } from "react-bootstrap";
+import { useContext } from "react";
+import { UtilStateContextBase } from "../../utils/states/contexts";
+import OrderSettingMenu from "../../orders/settings/OrderSettingMenu";
+import ProductSettingMenu from "../../products/settings/ProductSettingMenu";
 
 const ManagerNavigationSidebar = () => {
+  const context = useContext(UtilStateContextBase);
+
   return (
     <div className="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
       <div
@@ -10,60 +19,10 @@ const ManagerNavigationSidebar = () => {
         id="sidebarMenu"
         aria-labelledby="sidebarMenuLabel"
       >
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="sidebarMenuLabel">
-            Company name
-          </h5>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="offcanvas"
-            data-bs-target="#sidebarMenu"
-            aria-label="Close"
-          ></button>
-        </div>
         <div className="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-          <ul className="nav flex-column">
-            <li className="nav-item">
-              <a
-                className="nav-link d-flex align-items-center gap-2 active"
-                aria-current="page"
-                href="#"
-              >
-                <FaTractor />
-                Dashboard
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Orders
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Products
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Customers
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Reports
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Integrations
-              </a>
-            </li>
+          <ul className="nav flex-column mb-auto">
+            <ProductSettingMenu />
+            <OrderSettingMenu />
           </ul>
 
           <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -71,43 +30,8 @@ const ManagerNavigationSidebar = () => {
           </h6>
           <ul className="nav flex-column mb-auto">
             <PermissionSettingMenu />
-          </ul>
-
-          <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
-            <a
-              className="link-secondary"
-              href="#"
-              aria-label="Add a new report"
-            >
-              <FaPlusCircle />
-            </a>
-          </h6>
-          <ul className="nav flex-column mb-auto">
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Current month
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Last quarter
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Social engagement
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
-                <FaTractor />
-                Year-end sale
-              </a>
-            </li>
+            <RoleSettingMenu />
+            <UserSettingMenu />
           </ul>
 
           <hr className="my-3" />
@@ -120,10 +44,15 @@ const ManagerNavigationSidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="#">
+              <NavLink
+                className="nav-link d-flex align-items-center gap-2"
+                onClick={() => {
+                  context.auth.signOut();
+                }}
+              >
                 <FaTractor />
                 Sign out
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

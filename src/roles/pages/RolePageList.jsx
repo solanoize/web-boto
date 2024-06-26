@@ -1,4 +1,4 @@
-import {useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import {
   Button,
   Card,
@@ -14,7 +14,7 @@ import ManagerWidgetPagination from "../../managers/widgets/ManagerWidgetPaginat
 import useList from "../../utils/hooks/useList.jsx";
 import ManagerWidgetTitle from "../../managers/widgets/ManagerWidgetTitle.jsx";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC.jsx";
-import {UtilStateContextBase} from "../../utils/states/contexts.jsx";
+import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
 
 const RolePageList = () => {
   const context = useContext(UtilStateContextBase);
@@ -27,9 +27,12 @@ const RolePageList = () => {
   }, []);
 
   return (
-    <Container>
+    <Container className="mt-3">
       <ManagerWidgetTitle title={"Roles"}>
-        <ManagerWidgetRBAC context={context} permissions={['create-roles', 'read-permissions']}>
+        <ManagerWidgetRBAC
+          context={context}
+          permissions={["create-roles", "read-permissions"]}
+        >
           <Button onClick={() => navigate("new")}>New Role</Button>
         </ManagerWidgetRBAC>
       </ManagerWidgetTitle>
@@ -62,7 +65,10 @@ const RolePageList = () => {
                     <td>{value.accessList.join(", ")}</td>
                     <td>
                       <div className={"d-flex justify-content-start gap-3"}>
-                        <ManagerWidgetRBAC context={context} permissions={['update-roles', 'read-permissions']}>
+                        <ManagerWidgetRBAC
+                          context={context}
+                          permissions={["update-roles", "read-permissions"]}
+                        >
                           <NavLink
                             className="text-secondary"
                             href={`#/roles/update/${value._id}`}
@@ -70,7 +76,10 @@ const RolePageList = () => {
                             edit
                           </NavLink>
                         </ManagerWidgetRBAC>
-                        <ManagerWidgetRBAC context={context} permissions={['delete-roles', 'read-permissions']}>
+                        <ManagerWidgetRBAC
+                          context={context}
+                          permissions={["delete-roles", "read-permissions"]}
+                        >
                           <NavLink
                             className="text-secondary"
                             href={`#/roles/delete/${value._id}`}

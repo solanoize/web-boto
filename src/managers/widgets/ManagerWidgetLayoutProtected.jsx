@@ -1,9 +1,7 @@
 import PropTypes from "prop-types";
-import ManagerNavigationBase from "../navigations/ManagerNavigationBase.jsx";
 import { useContext } from "react";
 import { UtilStateContextBase } from "../../utils/states/contexts.jsx";
 import UserPageSignIn from "../../users/pages/UserPageSignIn.jsx";
-import ManagerWidgetSidebar from "./ManagerWidgetSidebar.jsx";
 import ManagerNavigationSidebar from "../navigations/ManagerNavigationSidebar.jsx";
 import ManagerNavigationHeader from "../navigations/ManagerNavigationHeader.jsx";
 

@@ -29,7 +29,7 @@ const UserPageList = () => {
   }, []);
 
   return (
-    <Container>
+    <Container className="mt-3">
       <ManagerWidgetTitle title={"Users"}>
         <ManagerWidgetRBAC
           context={context}

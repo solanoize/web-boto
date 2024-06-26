@@ -22,7 +22,7 @@ const ProductPageCreate = () => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-4">
         <ManagerWidgetTitle title={"New Product"} />
 
         <Row className="mb-3">
