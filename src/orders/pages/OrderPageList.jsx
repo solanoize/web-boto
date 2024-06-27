@@ -2,21 +2,14 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UtilStateContextBase } from "../../utils/states/contexts";
 import useList from "../../utils/hooks/useList";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  NavLink,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import ManagerWidgetTitle from "../../managers/widgets/ManagerWidgetTitle";
 import ManagerWidgetRBAC from "../../managers/widgets/ManagerWidgetRBAC";
 import { CREATE_ORDERS } from "../states/constants";
 import { READ_PRODUCTS } from "../../products/states/constants";
 import ManagerWidgetFilter from "../../managers/widgets/ManagerWidgetFilter";
 import ManagerWidgetPagination from "../../managers/widgets/ManagerWidgetPagination";
+import OrderWidgetPreview from "../widgets/OrderWidgetPreview";
 
 const OrderPageList = () => {
   const navigate = useNavigate();
@@ -69,7 +62,7 @@ const OrderPageList = () => {
                     <td>{order.tanggal}</td>
                     <td>{order.total}</td>
                     <td>
-                      <NavLink className={"text-secondary"}>preview</NavLink>
+                      <OrderWidgetPreview id={order._id} />
                     </td>
                   </tr>
                 ))}

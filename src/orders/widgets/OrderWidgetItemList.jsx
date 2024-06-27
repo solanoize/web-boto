@@ -4,7 +4,7 @@ import ManagerWidgetStaticPagination from "../../managers/widgets/ManagerWidgetS
 import useStaticPagination from "../../utils/hooks/useStaticPagination";
 import PropTypes from "prop-types";
 
-const OrderWidgetItemList = ({ items }) => {
+const OrderWidgetItemList = ({ items, callback }) => {
   const itemPagination = useStaticPagination(items, items, 5);
 
   return (
@@ -18,20 +18,32 @@ const OrderWidgetItemList = ({ items }) => {
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Actions</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+            {callback && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
-          {itemPagination.results.map((product) => (
+          {itemPagination.results.map((product, index) => (
             <tr key={product.id}>
               <td>{product.value.name}</td>
               <td>{product.value.price}</td>
               <td>{product.value.stock}</td>
-              <td>
-                <Button size="sm" variant="outined-danger">
-                  <FaTrash />
-                </Button>
-              </td>
+              <td>{product.value.qty}</td>
+              <td>{product.value.subtotal}</td>
+              {callback && (
+                <td>
+                  <Button
+                    onClick={() => {
+                      callback(product, index);
+                    }}
+                    size="sm"
+                    variant="outined-danger"
+                  >
+                    <FaTrash />
+                  </Button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
@@ -46,6 +58,7 @@ const OrderWidgetItemList = ({ items }) => {
 
 OrderWidgetItemList.propTypes = {
   items: PropTypes.array,
+  callback: PropTypes.func,
 };
 
 export default OrderWidgetItemList;

@@ -6,9 +6,9 @@ import useInput from "./useInput.jsx";
 
 const useDetail = (
   endpoints,
-  stateDataInit={},
-  guideFields=[],
-  validationFields=[]
+  stateDataInit = {},
+  guideFields = [],
+  validationFields = []
 ) => {
   const api = useAPI();
   const [state, setState] = useState(stateDataInit);

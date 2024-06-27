@@ -12,6 +12,7 @@ import ManagerWidgetGuide from "../../managers/widgets/ManagerWidgetGuide";
 import ManagerWidgetValidation from "../../managers/widgets/ManagerWidgetValidation";
 import ProductWidgetChoice from "../../products/widgets/ProductWidgetChoice";
 import OrderWidgetItemList from "../widgets/OrderWidgetItemList";
+import { useEffect } from "react";
 
 const OrderPageCreate = () => {
   const navigate = useNavigate();
@@ -21,6 +22,16 @@ const OrderPageCreate = () => {
     ORDER_FIELD_GUIDE,
     ORDER_FIELD_VALIDATION
   );
+
+  useEffect(() => {
+    let total = 0;
+    for (let item of orderCreate.state.items) {
+      total += item.subtotal;
+    }
+
+    orderCreate.setState((values) => ({ ...values, total }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderCreate.state.items]);
 
   return (
     <>
@@ -113,13 +124,21 @@ const OrderPageCreate = () => {
             />
           </Col>
           <Col>
-            <OrderWidgetItemList items={orderCreate.state.items} />
+            <OrderWidgetItemList
+              items={orderCreate.state.items}
+              callback={(item, index) => {
+                const items = [...orderCreate.state.items];
+                items.splice(index, 1);
+                orderCreate.setState((values) => ({ ...values, items }));
+              }}
+            />
           </Col>
         </Row>
       </Container>
 
       <ManagerWidgetAction>
         <>
+          <div className="fw-bold">Total: {orderCreate.state.total}</div>
           <Button variant="outline-dark" onClick={() => navigate("../")}>
             Back
           </Button>

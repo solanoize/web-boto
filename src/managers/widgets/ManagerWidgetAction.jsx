@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 function ManagerWidgetAction({ children }) {
   return (
     <Navbar expand="lg" fixed="bottom" className="bg-body-tertiary ">
-      <Container className="d-flex justify-content-end gap-3">
+      <Container className="d-flex justify-content-end align-items-center gap-3">
         <Row>
           <Col className="d-flex justify-content-end gap-3">{children}</Col>
         </Row>
