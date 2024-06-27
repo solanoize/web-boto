@@ -1,12 +1,12 @@
 import useAuth from "./utils/hooks/useAuth.jsx";
 import { UtilStateContextBase } from "./utils/states/contexts";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
-import PermissionSettingRouter from "./permissions/settings/PermissionSettingRouter.jsx";
-import RoleSettingRouter from "./roles/setttings/RoleSettingRouter.jsx";
-import UserSettingRouter from "./users/settings/UserSettingRouter.jsx";
-import DashboardSettingRouter from "./dashboards/settings/DashboardSettingRouter.jsx";
-import ProductSettingRouter from "./products/settings/ProductSettingRouter.jsx";
-import OrderSettingRouter from "./orders/settings/OrderSettingRouter.jsx";
+import PermissionSettingRouter from "./systems/permissions/settings/PermissionSettingRouter.jsx";
+import RoleSettingRouter from "./systems/roles/setttings/RoleSettingRouter.jsx";
+import UserSettingRouter from "./systems/users/settings/UserSettingRouter.jsx";
+import DashboardSettingRouter from "./systems/dashboards/settings/DashboardSettingRouter.jsx";
+import ProductSettingRouter from "./modules/products/settings/ProductSettingRouter.jsx";
+import OrderSettingRouter from "./modules/orders/settings/OrderSettingRouter.jsx";
 
 function App() {
   const auth = useAuth();
