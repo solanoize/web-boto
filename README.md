@@ -1,3 +1,8 @@
+# Web Boto
+Aplikasi penjualan sederhana yang mengimplementasikan RBAC (role base access control). Dibuat menggunakan React.
+
+## API Boto
+
 ## Environment
 
 Create `.env.local` in your root project:
